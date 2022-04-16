@@ -1,2 +1,6 @@
 ## Install dependencies
-In your terminal after you clone your project down, remember to run either `yarn` or `npm install` to build all the dependencies in the project.
+
+In your terminal after you clone your project down, remember to run either `yarn` or `npm install` to build all the
+dependencies in the project.
+
+https://beamish-jalebi-2db811.netlify.app/
