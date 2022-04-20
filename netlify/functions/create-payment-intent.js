@@ -21,6 +21,6 @@ exports.handler = async (event) => {
     return {
       statusCode: 400,
       body: JSON.stringify({error})
-    }
+    };
   }
 };
