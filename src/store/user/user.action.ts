@@ -2,6 +2,7 @@ import {Action, ActionWithPayload, createAction, withMatcher} from "../../utils/
 import {USER_ACTION_TYPES} from "./user.types";
 import {AdditionalInformation, UserData} from "../../utils/firebase/firebase.utils";
 import exp from "constants";
+import {User} from "firebase/auth";
 
 export type CheckUserSession = Action<USER_ACTION_TYPES.CHECK_USER_SESSION>;
 export type SetCurrentUser = ActionWithPayload<USER_ACTION_TYPES.SET_CURRENT_USER, UserData>;
@@ -13,7 +14,7 @@ export type SignUpStart = ActionWithPayload<USER_ACTION_TYPES.SIGN_UP_START, {
     displayName: string
 }>
 export type SignUpSuccess = ActionWithPayload<USER_ACTION_TYPES.SIGN_UP_SUCCESS, {
-    user: UserData,
+    user: User,
     additionalDetails: AdditionalInformation
 }>
 export type SignInSuccess = ActionWithPayload<USER_ACTION_TYPES.SIGN_IN_SUCCESS, UserData>
@@ -33,7 +34,7 @@ export const emailSignInStart = withMatcher((email: string, password: string): E
     password
 }));
 
-export const signInSuccess = withMatcher((user: UserData): SignInSuccess => createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, user));
+export const signInSuccess = withMatcher((user: UserData & { id: string }): SignInSuccess => createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, user));
 
 export const signInFailure = withMatcher((error: Error): SignInFailed => createAction(USER_ACTION_TYPES.SIGN_IN_FAILED, error));
 
@@ -43,7 +44,10 @@ export const signUpStart = withMatcher((email: string, password: string, display
     displayName
 }));
 
-export const signUpSuccess = withMatcher((user: UserData, additionalDetails: AdditionalInformation): SignUpSuccess => createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, {
+export const signUpSuccess = withMatcher((
+    user: User,
+    additionalDetails: AdditionalInformation
+): SignUpSuccess => createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, {
     user,
     additionalDetails
 }));

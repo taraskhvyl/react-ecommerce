@@ -7,7 +7,6 @@ import {persistReducer, persistStore} from "redux-persist";
 import createSagaMiddleware from "redux-saga";
 import {rootSaga} from "./root-saga";
 import {PersistConfig} from "redux-persist/es/types";
-import {Root} from "react-dom/client";
 
 declare global {
     interface Window {
