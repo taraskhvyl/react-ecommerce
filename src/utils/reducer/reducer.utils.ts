@@ -1,6 +1,4 @@
 import {AnyAction} from "redux";
-import firebase from "firebase/compat";
-import functions = firebase.functions;
 
 type Matchable<AC extends () => AnyAction> = AC & {
     type: ReturnType<AC>['type'];

@@ -10,6 +10,8 @@ import {
   getCurrentUser
 } from "./utils/firebase/firebase.utils";
 
+import { GlobalStyles } from "./global.styles";
+
 const App = () => {
   const dispatch = useDispatch();
 
@@ -18,14 +20,17 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Navigation/>}>
-        <Route index element={<Home/>}/>
-        <Route path="shop/*" element={<Shop/>}/>
-        <Route path="auth" element={<Authentication/>}/>
-        <Route path="checkout" element={<Checkout/>}/>
-      </Route>
-    </Routes>
+    <>
+      <GlobalStyles/>
+      <Routes>
+        <Route path="/" element={<Navigation/>}>
+          <Route index element={<Home/>}/>
+          <Route path="shop/*" element={<Shop/>}/>
+          <Route path="auth" element={<Authentication/>}/>
+          <Route path="checkout" element={<Checkout/>}/>
+        </Route>
+      </Routes>
+    </>
   );
 };
 

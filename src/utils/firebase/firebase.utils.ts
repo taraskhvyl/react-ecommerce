@@ -23,7 +23,6 @@ import {
     QueryDocumentSnapshot
 } from "firebase/firestore";
 import {Category} from "../../store/categories/categories.types";
-import firebase from "firebase/compat";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBSX5wWMyYEyiAcf5aobfa8ay496EqSU_g",
